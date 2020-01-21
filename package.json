@@ -6,12 +6,17 @@
   "scripts": {
     "clean": "rimraf dist && rimraf coverage.lcov",
     "lint": "eslint ./src --ext .js",
-    "prebuild": ""
+    "prebuild": "npm run -s clean",
+    "build": "babel src -d dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.0",
