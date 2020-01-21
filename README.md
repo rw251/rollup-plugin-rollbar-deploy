@@ -6,7 +6,7 @@ rollup-plugin-rollbar-deploy
 [![Coverage](https://img.shields.io/codecov/c/github/rw251/rollup-plugin-rollbar-deploy/master.svg?style=flat-square)](https://codecov.io/gh/rw251/rollup-plugin-rollbar-deploy)
 [![Downloads](https://img.shields.io/npm/dm/rollup-plugin-rollbar-deploy.svg?style=flat-square)](https://www.npmjs.com/package/rollup-plugin-rollbar-deploy)
 
-This is a [Webpack](https://webpack.github.io) plugin that simplifies the process of notifiying [Rollbar](https://rollbar.com) of a deployment.
+This is a [Rollup](https://rollupjs.org/) plugin that simplifies the process of notifiying [Rollbar](https://rollbar.com) of a deployment.
 
 ## Installation
 Install the plugin with npm:
