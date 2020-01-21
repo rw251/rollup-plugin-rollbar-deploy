@@ -1,26 +1,21 @@
-import expect, { /* spyOn, c */createSpy } from 'expect';
-// import nock from 'nock';
-// import RollbarDeployPlugin from '../src/RollbarDeployPlugin';
-// import { ROLLBAR_ENDPOINT } from '../src/constants';
-
 describe('RollbarDeployPlugin', function() {
   beforeEach(function() {
     this.compiler = {
       options: {},
-      plugin: createSpy(),
+      plugin: jest.fn(),
       hooks: {
         afterEmit: {
-          tapAsync: createSpy()
+          tapAsync: jest.fn()
         },
       },
       resolvers: {
         loader: {
-          plugin: createSpy(),
-          resolve: createSpy(),
+          plugin: jest.fn(),
+          resolve: jest.fn(),
         },
         normal: {
-          plugin: createSpy(),
-          resolve: createSpy(),
+          plugin: jest.fn(),
+          resolve: jest.fn(),
         },
       },
     };
@@ -35,7 +30,7 @@ describe('RollbarDeployPlugin', function() {
   });
 
   describe('constructor', function() {
-    it('should return an instance', function() {
+    it('should return an instance', () => {
       expect(true).toBe(true);
     });
   });
