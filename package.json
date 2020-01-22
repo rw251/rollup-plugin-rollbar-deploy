@@ -8,9 +8,9 @@
     "lint": "eslint ./src --ext .js",
     "prebuild": "npm run -s clean",
     "build": "babel src -d dist",
-    "test": "cross-env NODE_ENV='test' nyc jest",
+    "test": "jest --coverage",
     "test:watch": "jest --watch --watchPathIgnorePatterns /fixtures",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "coverage": "codecov --disable=gcov",
     "preversion": "npm run -s lint && npm run -s test && npm run -s build",
     "postversion": "npm run version:amend && git push origin master --tags && npm publish",
     "version:amend": "cross-var git commit --amend -m \"Release v$npm_package_version\""
@@ -34,7 +34,6 @@
     "eslint-plugin-import": "^2.20.0",
     "expect": "^24.9.0",
     "jest": "^24.9.0",
-    "nyc": "^15.0.0",
     "rimraf": "^3.0.0",
     "rollup": "^1.29.1"
   },

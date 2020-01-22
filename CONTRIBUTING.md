@@ -55,7 +55,7 @@ npm run test:watch
 
 ## Test coverage
 
-We use the excellent module, [nyc](https://www.npmjs.com/package/nyc), for coverage and strive for 100%.
+Test coverage is done automatically with [Jest](https://jestjs.io/).
 The coverage report will be displayed in the terminal after tests run.
 
 
