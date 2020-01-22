@@ -16,7 +16,7 @@
     "version:amend": "cross-var git commit --amend -m \"Release v$npm_package_version\""
   },
   "keywords": [],
-  "author": "",
+  "author": "Richard Williams <1234richardwilliams@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.8.3",
