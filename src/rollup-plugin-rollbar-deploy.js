@@ -1,4 +1,4 @@
-// Custom rollup plugin for uploading rollbar sourcemaps
+// Custom rollup plugin for uploading rollbar deploys
 import FormData from 'form-data';
 
 const submitDeployment = ({ rollbarEndpoint, silent, form }) => new Promise((resolve, reject) => {
@@ -24,19 +24,27 @@ const submitDeployment = ({ rollbarEndpoint, silent, form }) => new Promise((res
   });
 });
 
-export default function rollbarSourcemaps({
+export default function rollbarDeploy({
   accessToken,
   revision,
   environment,
   localUsername,
   silent = false,
-  rollbarEndpoint = 'https://api.rollbar.com/api/1/deploy'
+  rollbarEndpoint = 'https://api.rollbar.com/api/1/deploy',
 }) {
   return {
+    localProps: {
+      accessToken,
+      revision,
+      environment,
+      localUsername,
+      silent,
+      rollbarEndpoint
+    },
     name: 'rollup-plugin-rollbar-deploy',
     async writeBundle() {
       const form = new FormData();
-      form.append('local_username', localUsername);
+      if (localUsername) form.append('local_username', localUsername);
       form.append('access_token', accessToken);
       form.append('revision', revision);
       form.append('environment', environment);
