@@ -3,15 +3,15 @@
   "version": "1.1.2",
   "description": "A Rollup plugin to upload deploys to Rollbar after build",
   "main": "./dist/rollup-plugin-rollbar-deploy.js",
+  "type": "module",
   "scripts": {
     "clean": "rimraf dist && rimraf coverage.lcov",
-    "lint": "eslint ./src --ext .js",
     "prebuild": "npm run -s clean",
-    "build": "babel src -d dist",
+    "build": "babel --config-file ./.esm.babelrc src -d dist",
     "test": "jest --coverage",
     "test:watch": "jest --watch --watchPathIgnorePatterns /fixtures",
     "coverage": "codecov --disable=gcov",
-    "preversion": "npm run -s lint && npm run -s test && npm run -s build",
+    "preversion": "npm run -s test && npm run -s build",
     "postversion": "npm run version:amend && git push origin master --tags && npm publish",
     "version:amend": "cross-var git commit --amend -m \"Release v$npm_package_version\""
   },
@@ -19,22 +19,18 @@
   "author": "Richard Williams <1234richardwilliams@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.8.3",
-    "@babel/core": "^7.8.3",
-    "@babel/preset-env": "^7.8.3",
-    "@babel/register": "^7.8.3",
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.23.2",
     "babel-jest": "^25.1.0",
     "babel-plugin-rewire": "^1.2.0",
     "codecov": "^3.6.1",
     "cross-env": "^6.0.3",
     "cross-var": "^1.1.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.20.0",
     "expect": "^25.1.0",
-    "jest": "^25.1.0",
+    "jest": "^29.7.0",
     "rimraf": "^3.0.0",
-    "rollup": "^1.29.1"
+    "rollup": "^2.79.0"
   },
   "dependencies": {
     "form-data": "^3.0.0"
