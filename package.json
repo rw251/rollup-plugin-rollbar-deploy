@@ -13,7 +13,7 @@
     "coverage": "codecov --disable=gcov",
     "preversion": "npm run -s test && npm run -s build",
     "postversion": "npm run version:amend && git push origin master --tags && npm publish",
-    "version:amend": "cross-var git commit --amend -m \"Release v$npm_package_version\""
+    "version:amend": "node ./scripts/version-amend.mjs"
   },
   "keywords": [],
   "author": "Richard Williams <1234richardwilliams@gmail.com>",
@@ -26,7 +26,6 @@
     "babel-plugin-rewire": "^1.2.0",
     "codecov": "^3.6.1",
     "cross-env": "^6.0.3",
-    "cross-var": "^1.1.0",
     "expect": "^25.1.0",
     "jest": "^29.7.0",
     "rimraf": "^3.0.0",
