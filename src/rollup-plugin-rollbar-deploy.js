@@ -6,12 +6,22 @@ const submitDeployment = ({ rollbarEndpoint, silent, form }) =>
   new Promise((resolve, reject) => {
     form.submit(rollbarEndpoint, (err, response) => {
       if (err) return reject(err);
+
+      response.once('error', reject);
+
       if (response.statusCode === 200) {
-        if (!silent) {
-          console.log('Rollbar successfully notified of deployment.');
+        if (typeof response.resume === 'function') {
+          response.resume();
         }
-        return resolve();
+
+        return response.once('end', () => {
+          if (!silent) {
+            console.log('Rollbar successfully notified of deployment.');
+          }
+          resolve();
+        });
       }
+
       let body = [];
       return response
         .on('data', (chunk) => {
